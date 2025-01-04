@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKAID cloud панель управления</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/new_css.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container-elements-nav">
+            <a href="{% url 'dashboard' %}" class="logo-panel">S K A I D<span class="highlight"> .CLOUD</span></a>
+            <div class="panel-profile-r">
+                <a href="{% url 'dashboard_finance' %}" class="panel-balance">
+                    {{ user.balance_as_int }} ₽
+                </a>
+                <a href="{% url 'dashboard_settings' %}" class="profile-nav">
+                    {{ user.username }}
+                </a>
+                <a href="{% url 'logout' %}" class="b-nav-logout">Выйти</a>
+            </div>
+        </div>
+        <div class="container-elements-nav-manage">
+            <a href="{% url 'dashboard' %}" class="b-nav-servers">Виртуальные серверы</a>
+            <a href="{% url 'dashboard_finance' %}" class="b-nav-servers active_nav">Финансы</a>
+            <a href="{% url 'dashboard_settings' %}" class="b-nav-servers">Настройки</a>
+            <a href="{% url 'dashboard_help' %}" class="b-nav-servers">Помощь</a>
+        </div>
+    </header>
+    
+    <section class="main-view">
+        <div class="add-server-text" style="padding: 0;">Финансы<span>.</span></div>
+        <div class="panel-server">
+            <div class="container-1-panel" style="justify-content: center;">
+                <div class="balance-state">Баланс: <span class="balance-value">{{ user.balance_as_int }} ₽</span></div>
+                <div class="input-section">
+                    <label for="amount" class="balance-add">Пополнение баланса</label>
+                    <input type="number" id="amount" value="" class="input-amount-balance" placeholder="Сумма"/>
+                </div>
+                
+                <div class="payment-section">
+                    <select id="payment-method" class="payment-method">
+                        <option>
+                            <img src="{% static 'images/card.png' %}" alt="" style="filter: invert(1);width: 40px;height: auto;">
+                            Российская банковская карта</option>
+                        <!-- Можно добавить другие опции -->
+                    </select>
+                </div>
+
+          
+        
+                <!-- Сумма и кнопка оплаты -->
+                <div class="b_pay_and_total">
+                    <a href="{% url 'dashboard_newserver' %}" class="b-payment-ok">Оплатить</a>
+                    <div class="total-section">
+                        <p>Итого: <span class="final-amount"><span id="targetDiv">0</span> ₽</span></p>
+                        <!-- <span class="old-amount">570 ₽</span> -->
+                    </div>
+                </div>
+            </div>
+            <div class="container-2-panel">
+                <img src="{% static 'images/finance.png' %}" alt="" style="width: 50%;height: auto;margin: 5%;">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Найти элементы
+        const inputField = document.getElementById('amount');
+        const targetDiv = document.getElementById('targetDiv');
+
+        // Добавить обработчик события ввода
+        inputField.addEventListener('input', () => {
+            const inputValue = inputField.value; // Получить значение из input
+            if (inputValue.trim() == '') {
+                targetDiv.textContent = 0;
+            } else {
+            targetDiv.textContent = inputValue; // Изменить текст внутри div
+            }
+        });
+    </script>
+</body>
+</html>

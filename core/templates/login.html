@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <style>
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .auth-block {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            max-width: 100%;
+            text-align: center;
+            border: 1px solid #37d0ff;
+            display: flex;
+            flex-direction: column;
+            height: 30%;
+        }
+
+        .auth-block h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #e7e7e7;
+        }
+
+        .auth-block input {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #202431;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #ffffff;
+            border: 0;
+        }
+
+        .auth-block button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .auth-block button:hover {
+            background-color: #0056b3;
+        }
+
+        .auth-block .signup-link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .auth-block .signup-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-block">
+            <h2>Авторизация</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Логин" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+            {% if error %}
+                <p style="color: #fff;">{{ error }}</p>
+            {% endif %}
+            <a href="{% url 'register' %}" class="signup-link">Забыли пароль?</a>
+            <a href="{% url 'register' %}" class="signup-link">Зарегистрироваться</a>
+        </div>
+    </div>
+</body>
+</html>

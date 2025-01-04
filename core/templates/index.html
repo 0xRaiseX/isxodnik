@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blank Page</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style_flex.css' %}">
+  <link rel="stylesheet" href="{% static 'css/flex.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+  <script type="text/javascript">
+    function t_onReady(func) {if(document.readyState!='loading') {func();} else {document.addEventListener('DOMContentLoaded',func);}}
+function t_onFuncLoad(funcName,okFunc,time) {if(typeof window[funcName]==='function') {okFunc();} else {setTimeout(function() {t_onFuncLoad(funcName,okFunc,time);},(time||100));}}
+   </script>
+  <script async="" charset="utf-8" onerror="this.loaderr='y';" src="https://static.tildacdn.info/ws/project11129203/tilda-blocks-page58777407.min.js?t=1734013927">
+      </script>
+  <script async="" charset="utf-8" onerror="this.loaderr='y';" src="https://static.tildacdn.info/js/tilda-faq-1.0.min.js">
+      </script>
+
+</head>
+<body>
+  <header>
+    <a href="{% url 'index' %}" class="logo">S K A I D<span class="highlight"> .CLOUD</span></a>
+    <nav>
+      <ul>
+        <li><a href="#tarifs">Тарифы</a></li>
+        <li><a href="#skaid-plus">Почему SKAID?</a></li>
+        <li><a href="#new-company">О компании</a></li>
+      </ul>
+    </nav>
+    <div class="main-buttons-nav">
+      {% if user.is_authenticated %}
+      <div class="container-user-profile">
+        <img src="{% static 'images/user.png' %}" alt="" style="width: 30px;height: auto;filter: invert(1);margin-right: 3%;">
+        <a href="{% url 'dashboard' %}" class="user-profile-button" style="font-size: 18px;margin-right: 5%;color: #ffffff;font-weight: 500;">{{ user.username }}</a>
+        <a href="{% url 'logout' %}" class="logout-button" style="font-size: 18px">Выйти</a>
+      </div>
+      {% else %}
+        <a class="login-button" href="{% url 'login' %}">Войти</a>
+        <a class="register-button" href="{% url 'register' %}">Регистрация</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="main-text-section">
+    <div class="main-text-container">
+      <div class="col-main">
+        <div class="subtitle">SKAID.CLOUD</div>
+        <h1 class="main-text-title">
+            <div>Хотите арендовать</div>
+            <div id="animated-text-container" class="highlight-container">
+                <span id="animated-text" class="highlight">виртуальный сервер?</span>
+            </div>
+        </h1>
+        <p class="main-text-description">
+          Начните работу со SKAID.cloud: предоставляем надежные VDS/VPS сервера с 99.98% доступностью для любых задач с масштабированием "на лету".<br />
+          Много денег не берем.
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <div class="b-container">
+        <a class="t-btn-main t-btn_md_main" href="http://" target="_blank">
+            <span class="t142__text">Перейти в панель</span>
+        </a>
+    </div>
+
+    <div class="line-container">
+        <hr class="t-divider t118__line">
+    </div>
+
+
+
+    <script>
+        const target = document.getElementById('animated-text');
+        const texts = [
+        'виртуальный сервер?',
+        'облачное решение?',
+        'суперкомпьютер для задач?'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+        const currentText = texts[textIndex];
+        if (isDeleting) {
+            charIndex--;
+        } else {
+            charIndex++;
+        }
+
+        target.textContent = currentText.slice(0, charIndex);
+
+        if (!isDeleting && charIndex === currentText.length) {
+            setTimeout(() => (isDeleting = true), 1000);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length; 
+        }
+
+        const delay = isDeleting ? 50 : 100;
+        setTimeout(typeEffect, delay);
+        }
+
+        typeEffect();
+    </script>
+
+<div class="r t-rec t-rec_pt_120 t-rec_pb_120" data-animationappear="off" data-record-type="681" id="rec830062620" style="padding-top:120px;padding-bottom:120px; ">
+    <div class="t681" id="tarifs">
+     <div class="t-section__container t-container t-container_flex">
+      <div class="t-col t-col_12">
+       <div class="t-section__title t-title t-title_xs t-align_center t-margin_auto" field="btitle">
+        Цены на услуги
+       </div>
+       <div class="t-section__descr t-descr t-descr_xl t-align_center t-margin_auto" field="bdescr">
+        Сеть 1 Гбит/с. Мощные процессоры Intel Xeon Scalable. Дата-центры уровня TIER III.
+       </div>
+      </div>
+     </div>
+     <style>
+      .t-section__descr {max-width:560px;}#rec830062620 .t-section__title {margin-bottom:40px;}#rec830062620 .t-section__descr {margin-bottom:90px;}@media screen and (max-width:960px) {#rec830062620 .t-section__title {margin-bottom:20px;}#rec830062620 .t-section__descr {margin-bottom:60px;}}
+     </style>
+     <div class="t-container">
+      <div class="t681__row t-row">
+       <div class="t-col t-col_3 t-prefix_1">
+        <div class="t681__title t-heading-left t-heading_sm" field="li_title__1501186364850">
+         V-01
+        </div>
+       </div>
+       <div class="t-col t-col_7">
+        <div class="t681__tablewrapper">
+         <div class="t681__textwrapper">
+          <div class="t681__descr t-descr t-descr_sm" field="li_descr__1501186364850">
+           — Процессор: 1 x 3.3 ГГц
+           <br/>
+           — Память: 1 ГБ
+           <br/>
+           — NVMe: 15 ГБ
+          </div>
+         </div>
+         <div class="t681__pricewrapper">
+          <div class="t681__price t-heading t-heading_sm" field="li_title2__1501186364850">
+           ₽150
+          </div>
+          <div class="t681__price-text t-descr t-descr_xxs" field="li_text__1501186364850">
+           в месяц
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t681__row t-row">
+       <div class="t-col t-col_3 t-prefix_1">
+        <div class="t681__title t-heading-left t-heading_sm" field="li_title__1501186364851">
+         V-02
+        </div>
+       </div>
+       <div class="t-col t-col_7">
+        <div class="t681__tablewrapper">
+         <div class="t681__textwrapper">
+          <div class="t681__descr t-descr t-descr_sm" field="li_descr__1501186364851">
+           — Процессор: 1 x 3.3 ГГц
+           <br/>
+           — Память: 2 ГБ
+           <br/>
+           — NVMe: 30 ГБ
+          </div>
+         </div>
+         <div class="t681__pricewrapper">
+          <div class="t681__price t-heading t-heading_sm" field="li_title2__1501186364851">
+           ₽400
+          </div>
+          <div class="t681__price-text t-descr t-descr_xxs" field="li_text__1501186364851">
+           в месяц
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t681__row t-row">
+       <div class="t-col t-col_3 t-prefix_1">
+        <div class="t681__title t-heading-left t-heading_sm" field="li_title__1502186364852">
+         V-03
+        </div>
+       </div>
+       <div class="t-col t-col_7">
+        <div class="t681__tablewrapper">
+         <div class="t681__textwrapper">
+          <div class="t681__descr t-descr t-descr_sm" field="li_descr__1502186364852">
+           — Процессор: 2 x 3.3 ГГц
+           <br/>
+           — Память: 2 ГБ
+           <br/>
+           — NVMe: 40 ГБ
+          </div>
+         </div>
+         <div class="t681__pricewrapper">
+          <div class="t681__price t-heading t-heading_sm" field="li_title2__1502186364852">
+           ₽700
+          </div>
+          <div class="t681__price-text t-descr t-descr_xxs" field="li_text__1502186364852">
+           в месяц
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t681__row t-row">
+       <div class="t-col t-col_3 t-prefix_1">
+        <div class="t681__title t-heading-left t-heading_sm" field="li_title__1732362140511">
+         V-04
+        </div>
+       </div>
+       <div class="t-col t-col_7">
+        <div class="t681__tablewrapper">
+         <div class="t681__textwrapper">
+          <div class="t681__descr t-descr t-descr_sm" field="li_descr__1732362140511">
+           — Процессор: 2 x 3.3 ГГц
+           <br/>
+           — Память: 4 ГБ
+           <br/>
+           — NVMe: 50 ГБ
+          </div>
+         </div>
+         <div class="t681__pricewrapper">
+          <div class="t681__price t-heading t-heading_sm" field="li_title2__1732362140511">
+           ₽850
+          </div>
+          <div class="t681__price-text t-descr t-descr_xxs" field="li_text__1732362140511">
+           в месяц
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t681__row t-row">
+       <div class="t-col t-col_3 t-prefix_1">
+        <div class="t681__title t-heading-left t-heading_sm" field="li_title__1732362198186">
+         V-05
+        </div>
+       </div>
+       <div class="t-col t-col_7">
+        <div class="t681__tablewrapper">
+         <div class="t681__textwrapper">
+          <div class="t681__descr t-descr t-descr_sm" field="li_descr__1732362198186">
+           — Процессор: 4 x 3.3 ГГц
+           <br/>
+           — Память: 8 ГБ
+           <br/>
+           — NVMe: 80 ГБ
+          </div>
+         </div>
+         <div class="t681__pricewrapper">
+          <div class="t681__price t-heading t-heading_sm" field="li_title2__1732362198186">
+           ₽1500
+          </div>
+          <div class="t681__price-text t-descr t-descr_xxs" field="li_text__1732362198186">
+            в месяц
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="t-section__container t-container">
+      <div class="t-col t-col_12">
+       <div class="t-section__bottomwrapper t-clear t-align_center">
+        <a class="t-btn t-btn_md" data-buttonfieldset="bbutton" href="" style="color:#ffffff;border:1px solid #37d0ff;" target="">
+         <table style="width:100%; height:100%;">
+          <tr>
+           <td data-field="bbuttontitle" id="new-company">
+            Больше тарифов
+           </td>
+          </tr>
+         </table>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="r t-rec t-rec_pt_60 t-rec_pb_60" data-record-type="36" id="rec830061027" style="padding-top:60px;padding-bottom:60px; ">
+    <!-- T021 -->
+    <div class="t021">
+     <div class="t-container">
+      <div class="t-row">
+       <div class="t-col t-col_2 t-prefix_5">
+        <div class="t-divider t021__line">
+        </div>
+       </div>
+      </div>
+      <div class="t-row">
+       <div class="t-col t-col_10 t-prefix_1">
+        <div class="t021__text-impact t-text-impact t-text-impact_md" field="text">
+         S K A I D .CLOUD - это новый, быстрый и надежный поставщик облачных услуг.
+        </div>
+       </div>
+      </div>
+      <div class="t-row">
+       <div class="t-col t-col_2 t-prefix_5">
+        <div class="t-divider t021__line">
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="r t-rec t-rec_pt_75 t-rec_pb_150" data-record-type="565" id="rec829939531" style="padding-top:75px;padding-bottom:150px; ">
+    <!-- T565 -->
+    <div class="t565">
+     <div class="t-section__container t-container t-container_flex">
+      <div class="t-col t-col_12">
+       <div class="t-section__title t-title t-title_xs t-align_center t-margin_auto" field="btitle">
+        Как арендовать сервер?
+       </div>
+      </div>
+     </div>
+     <style>
+      .t-section__descr {max-width:560px;}#rec829939531 .t-section__title {margin-bottom:105px;}#rec829939531 .t-section__descr {}@media screen and (max-width:960px) {#rec829939531 .t-section__title {margin-bottom:45px;}}
+     </style>
+     <div class="t-container t565__container">
+      <div class="t565__item t-item">
+       <div class="t-width t-width_8 t565__mainblock">
+        <div class="t565__col">
+         <div class="t565__linewrapper">
+          <div class="t565__line" style="width: 2px;">
+          </div>
+          <div class="t565__circle" style=" border-width: 2px; ">
+           <div class="t565__number t-name t-name_md" style="">
+            1
+           </div>
+          </div>
+         </div>
+         <div class="t565__block">
+          <div class="t565__title t-name t-name_lg" field="li_title__2869115271340">
+           Перейдите в панель управления
+          </div>
+          <div class="t565__descr t-text" field="li_descr__2869115271340">
+           Зарегистрируйтесь и наслаждайтесь нашей удобной и понятной панелью управления.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t565__item t-item">
+       <div class="t-width t-width_8 t565__mainblock">
+        <div class="t565__col t565__flipped">
+         <div class="t565__linewrapper">
+          <div class="t565__line" style="width: 2px;">
+          </div>
+          <div class="t565__circle" style=" border-width: 2px; ">
+           <div class="t565__number t-name t-name_md" style="">
+            2
+           </div>
+          </div>
+         </div>
+         <div class="t565__block-flipped">
+          <div class="t565__title t-name t-name_lg" field="li_title__2869115271341">
+           Выберите сервер
+          </div>
+          <div class="t565__descr t-text t-text_xs" field="li_descr__2869115271341">
+           Выберите нужную вам конфигурацию сервера и пополните баланс. Теперь сервер ваш. Деньги будем списывать раз в час.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t565__item t-item">
+       <div class="t-width t-width_8 t565__mainblock">
+        <div class="t565__col">
+         <div class="t565__linewrapper">
+          <div class="t565__line" style="width: 2px;">
+          </div>
+          <div class="t565__circle" style=" border-width: 2px; ">
+           <div class="t565__number t-name t-name_md" style="">
+            3
+           </div>
+          </div>
+         </div>
+         <div class="t565__block">
+          <div class="t565__title t-name t-name_lg" field="li_title__2869115271342">
+           Наслаждайтесь :&gt;
+          </div>
+          <div class="t565__descr t-text t-text_xs" field="li_descr__2869115271342">
+           Управляйте своим сервером как вам угодно. Наши сервера подходят для любых задач: хостинг сайтов, баз данных, кибернетис или боты для Телеграм.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="r t-rec t-rec_pt_135 t-rec_pb_165" data-animationappear="off" data-record-type="850" id="rec829940972" style="padding-top:135px;padding-bottom:165px; ">
+    <!-- t850 -->
+    <div class="t850" id="skaid-plus">
+     <div class="t-section__container t-container t-container_flex">
+      <div class="t-col t-col_12">
+       <div class="t-section__title t-title t-title_xs t-align_center t-margin_auto" field="btitle">
+        Почему стоит выбрать SKAID.CLOUD?
+       </div>
+      </div>
+     </div>
+     <style>
+      .t-section__descr {max-width:560px;}#rec829940972 .t-section__title {margin-bottom:90px;}#rec829940972 .t-section__descr {}@media screen and (max-width:960px) {#rec829940972 .t-section__title {margin-bottom:45px;}}
+     </style>
+     <div class="t850__container t-card__container t-container" data-columns-in-row="3">
+      <div class="t850__col t-item t-card__col t-card__col_withoutbtn t-col t-col_4 t-align_left">
+       <div class="t850__inner-col" style="border:1px solid #37d0ff;">
+        <div class="t850__wrap">
+         <div class="t-card__title t-name t-name_lg t850__bottommargin" field="li_title__5777642172360">
+          Масштабируемость
+         </div>
+         <div class="t-card__descr t-descr t-descr_sm" field="li_descr__5777642172360">
+          Вы можете создавать серверы всего одной кнопкой! Старт в течении 30 секунд.
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t850__col t-item t-card__col t-card__col_withoutbtn t-col t-col_4 t-align_left">
+       <div class="t850__inner-col" style="border:1px solid #37d0ff;">
+        <div class="t850__wrap">
+         <div class="t-card__title t-name t-name_lg t850__bottommargin" field="li_title__5777642172361">
+          Одни из лучших серверов
+         </div>
+         <div class="t-card__descr t-descr t-descr_sm" field="li_descr__5777642172361">
+          Наши серверы одни из самых лучших с доступностью 99,98% SLA (соглашение об уровне обслуживания).
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t850__col t-item t-card__col t-card__col_withoutbtn t-col t-col_4 t-align_left">
+       <div class="t850__inner-col" style="border:1px solid #37d0ff;">
+        <div class="t850__wrap">
+         <div class="t-card__title t-name t-name_lg t850__bottommargin" field="li_title__5777642172362">
+          Простой и понятный интерфейс
+         </div>
+         <div class="t-card__descr t-descr t-descr_sm" field="li_descr__5777642172362">
+          Простой интерфейс позволяет развертывать серверы без большого опыта знаний.
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t-clear t850__separator">
+      </div>
+      <div class="t850__col t-item t-card__col t-card__col_withoutbtn t-col t-col_4 t-align_left">
+       <div class="t850__inner-col" style="border:1px solid #37d0ff;">
+        <div class="t850__wrap">
+         <div class="t-card__title t-name t-name_lg t850__bottommargin" field="li_title__5777642172363">
+          Экономическая эффективность
+         </div>
+         <div class="t-card__descr t-descr t-descr_sm" field="li_descr__5777642172363">
+          С моделью подписки вы платите только за то, что используете.
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t850__col t-item t-card__col t-card__col_withoutbtn t-col t-col_4 t-align_left">
+       <div class="t850__inner-col" style="border:1px solid #37d0ff;">
+        <div class="t850__wrap">
+         <div class="t-card__title t-name t-name_lg t850__bottommargin" field="li_title__5777642172364">
+          Поддержка современных технологий
+         </div>
+         <div class="t-card__descr t-descr t-descr_sm" field="li_descr__5777642172364">
+          Поддерживаем самые современные технологии и постоянно внедряем новые.
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t850__col t-item t-card__col t-card__col_withoutbtn t-col t-col_4 t-align_left">
+       <div class="t850__inner-col" style="border:1px solid #37d0ff;">
+        <div class="t850__wrap">
+         <div class="t-card__title t-name t-name_lg t850__bottommargin" field="li_title__5777642172365">
+          Высокая скорость внедрения и обновлений
+         </div>
+         <div class="t-card__descr t-descr t-descr_sm" field="li_descr__5777642172365">
+          Платформа быстро развертывает новые приложения. Внедряем и запускаем новые обновления.
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <script type="text/javascript">
+     t_onReady(function() {t_onFuncLoad('t850_init',function() {t850_init('829940972');});});
+    </script>
+    <style>
+     #rec829940972 .t850__inner-col {box-shadow:0px 0px 10px rgba(0,0,0,0.1);}
+    </style>
+    <style>
+     #rec829940972 .t850__inner-col{border-radius:5px;}
+    </style>
+   </div>
+   <div class="r t-rec t-rec_pt_120 t-rec_pb_135" data-record-type="1118" id="rec829941138" style="padding-top:120px;padding-bottom:135px; ">
+    <!-- T1118-->
+    <div class="t1118">
+     <div class="t-section__container t-container t-container_flex">
+      <div class="t-col t-col_12">
+       <div class="t-section__title t-title t-title_xs t-align_center t-margin_auto" field="btitle">
+        Остались вопросы?
+       </div>
+       <div class="t-section__descr t-descr t-descr_xl t-align_center t-margin_auto" field="bdescr">
+        Тогда ответим на самые часто задаваемые вопросы.
+       </div>
+      </div>
+     </div>
+     <style>
+      .t-section__descr {max-width:560px;}#rec829941138 .t-section__title {margin-bottom:40px;}#rec829941138 .t-section__descr {margin-bottom:80px;}@media screen and (max-width:960px) {#rec829941138 .t-section__title {margin-bottom:20px;}#rec829941138 .t-section__descr {margin-bottom:45px;}}
+     </style>
+     <div class="t-container">
+      <div class="t-col t-col_6">
+       <div class="t1118__accordion t_faq__accordion" data-accordion="true" style="border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+        <div class="t1118__wrapper">
+         <div class="t1118__header t_faq__header">
+          <button aria-controls="accordion1_829941138" aria-expanded="false" class="t1118__trigger-button t_faq__trigger-button" type="button">
+           <span class="t1118__title t-name t-name_xl" field="li_title__3278037808700">
+            Что такое VDS/VPS сервер?
+           </span>
+           <!-- <svg class="t1118__icon" focusable="false" role="presentation" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" stroke-width="0">
+            </circle>
+            <g class="t1118__lines" fill="none" stroke-width="2px" stroke="white">
+             <path d="M9 20H31">
+             </path>
+             <path d="M20 9V31">
+             </path>
+            </g>
+           </svg> -->
+          </button>
+         </div>
+         <div class="t1118__content" id="accordion1_829941138" style="box-sizing: border-box; display: block;">
+          <div class="t1118__textwrapper">
+           <div class="t1118__descr t-descr t-descr_sm" field="li_descr__3278037808700">
+            VDS - Виртуальный выделенный сервер. Услуга предполагает, что клиент за ежемесячную плату получает виртуальный сервер для размещения на нем нужной ему ИТ-инфраструктуры.
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="t1118__accordion t_faq__accordion" data-accordion="true" style="border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+        <div class="t1118__wrapper">
+         <div class="t1118__header t_faq__header">
+          <button aria-controls="accordion2_829941138" aria-expanded="false" class="t1118__trigger-button t_faq__trigger-button" type="button">
+           <span class="t1118__title t-name t-name_xl" field="li_title__3288037808701">
+            Почему я должен выбрать вашу компанию?
+           </span>
+           <!-- <svg class="t1118__icon" focusable="false" role="presentation" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" stroke-width="0">
+            </circle>
+            <g class="t1118__lines" fill="none" stroke-width="2px"  stroke="white">
+             <path d="M9 20H31">
+             </path>
+             <path d="M20 9V31">
+             </path>
+            </g>
+           </svg> -->
+          </button>
+         </div>
+         <div class="t1118__content" hidden="" id="accordion2_829941138" style="box-sizing: border-box; display: block;">
+          <div class="t1118__textwrapper">
+           <div class="t1118__descr t-descr t-descr_sm" field="li_descr__3288037808701">
+            Мы просто делаем свою работу очень хорошо :&gt;
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="t1118__accordion t_faq__accordion" data-accordion="true" style="border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+        <div class="t1118__wrapper">
+         <div class="t1118__header t_faq__header">
+          <button aria-controls="accordion3_829941138" aria-expanded="false" class="t1118__trigger-button t_faq__trigger-button" type="button">
+           <span class="t1118__title t-name t-name_xl" field="li_title__3288037808702">
+            Как арендовать сервер?
+           </span>
+           <!-- <svg class="t1118__icon" focusable="false" role="presentation" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" stroke-width="0">
+            </circle>
+            <g class="t1118__lines" fill="none" stroke-width="2px"  stroke="white">
+             <path d="M9 20H31">
+             </path>
+             <path d="M20 9V31">
+             </path>
+            </g>
+           </svg> -->
+          </button>
+         </div>
+         <div class="t1118__content" hidden="" id="accordion3_829941138" style="box-sizing: border-box; display: block;">
+          <div class="t1118__textwrapper">
+           <div class="t1118__descr t-descr t-descr_sm" field="li_descr__3288037808702">
+            Зарегистрируйтесь, после чего вы попадете в панель управления. Выберите сервер, пополните баланс. Мы запустим сервер и передадим вам доступ в течении 30 секунд.
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="t-col t-col_6">
+       <div class="t1118__accordion t_faq__accordion" data-accordion="true" style="border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+        <div class="t1118__wrapper">
+         <div class="t1118__header t_faq__header">
+          <button aria-controls="accordion1_829941138" aria-expanded="false" class="t1118__trigger-button t_faq__trigger-button" type="button">
+           <span class="t1118__title t-name t-name_xl" field="li_title__3288037808703">
+            Где находятся сервера?
+           </span>
+           <!-- <svg class="t1118__icon" focusable="false" role="presentation" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" stroke-width="0">
+            </circle>
+            <g class="t1118__lines" fill="none" stroke-width="2px"  stroke="white">
+             <path d="M9 20H31">
+             </path>
+             <path d="M20 9V31">
+             </path>
+            </g>
+           </svg> -->
+          </button>
+         </div>
+         <div class="t1118__content" hidden="" id="accordion1_829941138" style="box-sizing: border-box; display: block;">
+          <div class="t1118__textwrapper">
+           <div class="t1118__descr t-descr t-descr_sm" field="li_descr__3288037808703">
+            Ниши сервера расположены в надежных дата-центрах уровня Tier III Санкт-Петербурга.
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+
+       <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const accordions = document.querySelectorAll(".t1118__trigger-button");
+
+    accordions.forEach((button) => {
+        button.addEventListener("click", () => {
+            const content = button.closest(".t1118__wrapper").querySelector(".t1118__content");
+
+            // Смена состояния aria-expanded
+            const isExpanded = button.getAttribute("aria-expanded") === "true";
+            button.setAttribute("aria-expanded", !isExpanded);
+
+            // Раскрытие или скрытие контента
+            if (isExpanded) {
+                content.classList.remove("open");
+                content.setAttribute("hidden", "");
+            } else {
+                content.classList.add("open");
+                content.removeAttribute("hidden");
+            }
+        });
+    });
+});
+
+       </script>
+       <div class="t1118__accordion t_faq__accordion" data-accordion="true" style="border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+        <div class="t1118__wrapper">
+         <div class="t1118__header t_faq__header">
+          <button aria-controls="accordion2_829941138" aria-expanded="false" class="t1118__trigger-button t_faq__trigger-button" type="button">
+           <span class="t1118__title t-name t-name_xl" field="li_title__3288037808704">
+            Подойдет ли VDS/VPS сервер для...?
+           </span>
+           <!-- <svg class="t1118__icon" focusable="false" role="presentation" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" stroke-width="0">
+            </circle>
+            <g class="t1118__lines" fill="none" stroke-width="2px" stroke="white">
+             <path d="M9 20H31">
+             </path>
+             <path d="M20 9V31">
+             </path>
+            </g>
+           </svg> -->
+          </button>
+         </div>
+         <div class="t1118__content" hidden="" id="accordion2_829941138" style="box-sizing: border-box; display: block;">
+          <div class="t1118__textwrapper">
+           <div class="t1118__descr t-descr t-descr_sm" field="li_descr__3288037808704">
+            Мы предоставляем разные тарифы с разным уровнем производительности, к тому же если производительности не хватит, вы можете масштабировать сервера "на лету", арендуя дополнительные вычислительные ресурсы, поэтому вы можете использовать сервер практически для любых задач.
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="t1118__accordion t_faq__accordion" data-accordion="true" style="border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+        <div class="t1118__wrapper">
+         <div class="t1118__header t_faq__header">
+          <button aria-controls="accordion3_829941138" aria-expanded="false" class="t1118__trigger-button t_faq__trigger-button" type="button">
+           <span class="t1118__title t-name t-name_xl" field="li_title__3288037808705">
+            Что если я запутаюсь и сделаю что-то не так?
+           </span>
+           <!-- <svg class="t1118__icon" focusable="false" role="presentation" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" stroke-width="0">
+            </circle>
+            <g class="t1118__lines" fill="none" stroke-width="2px" stroke="white">
+             <path d="M9 20H31">
+             </path>
+             <path d="M20 9V31">
+             </path>
+            </g>
+           </svg> -->
+          </button>
+         </div>
+         <div class="t1118__content" hidden="" id="accordion3_829941138" style="box-sizing: border-box; display: block;">
+          <div class="t1118__textwrapper">
+           <div class="t1118__descr t-descr t-descr_sm" field="li_descr__3288037808705">
+            Напишите нам в телеграм, и мы поможем решить вопрос!
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <script type="text/javascript">
+     t_onReady(function() {t_onFuncLoad('t1118_init',function() {t1118_init('829941138');});});
+    </script>
+   </div>
+   <!-- <div class="tg-container">
+    <div class="tg-vopros">Есть предложения что можно сдлетаь лушче?? Хотите что-то предложить, спросить, поругать нас или похвалить? Напишите нам в телеграм </div>
+    </div>   -->
+   <div class="r t-rec t-rec_pt_60 t-rec_pb_75" data-animationappear="off" data-bg-color="#171717" data-record-type="457" id="rec829943100" style="padding-top:60px;padding-bottom:75px;background-color:#000000; ">
+    <!-- T457 -->
+    <div class="t457">
+     <div class="t-container">
+        <div class="logo-company-big">
+            S K A I D .CLOUD
+        </div>
+      <div class="t-col t-col_12">
+       <ul class="t457__ul">
+        <li class="t457__li">
+         <a data-menu-item-number="1" href="#tarifs">
+          Тарифы
+         </a>
+        </li>
+        <li class="t457__li">
+         <a data-menu-item-number="2" href="#skaid-plus">
+          Почему SKAID?
+         </a>
+        </li>
+        <li class="t457__li">
+         <a data-menu-item-number="3" href="#new-company">
+          О компании
+         </a>
+        </li>
+        <li class="t457__li">
+         <a data-menu-item-number="5" href="">
+          Помощь
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="t-col t-col_12">
+       <div class="t457__copyright" field="text">
+        © Все права защищены.
+        <br/>
+        support@skaid.cloud
+       </div>
+      </div>
+     </div>
+    </div>
+    <style>
+     #rec829943100 .t457__copyright{color:#ffffff;}
+    </style>
+    <style>
+     #rec829943100 .t457__link{font-size:28px;color:#ffffff;font-weight:600;}#rec829943100 .t457__li a{color:#ffffff;}
+    </style>
+    <style>
+     #rec829943100 .t457__logo{color:#ffffff;font-weight:600;}@media screen and (min-width:480px){#rec829943100 .t457__logo{font-size:28px;}}
+    </style>
+   </div>
+  </div>
+ </body>
+</html>

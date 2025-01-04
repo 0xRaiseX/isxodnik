@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKAID cloud панель управления</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/new_css.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container-elements-nav">
+            <a href="{% url 'dashboard' %}" class="logo-panel">S K A I D<span class="highlight"> .CLOUD</span></a>
+            <div class="panel-profile-r">
+                <a href="{% url 'dashboard_finance' %}" class="panel-balance">
+                    {{ user.balance_as_int }} ₽
+                </a>
+                <a href="{% url 'dashboard_settings' %}" class="profile-nav">
+                    {{ user.username }}
+                </a>
+                <a href="{% url 'logout' %}" class="b-nav-logout">Выйти</a>
+            </div>
+        </div>
+        <div class="container-elements-nav-manage">
+            <a href="{% url 'dashboard' %}" class="b-nav-servers">Виртуальные серверы</a>
+            <a href="{% url 'dashboard_finance' %}" class="b-nav-servers">Финансы</a>
+            <a href="{% url 'dashboard_settings' %}" class="b-nav-servers active_nav">Настройки</a>
+            <a href="{% url 'dashboard_help' %}" class="b-nav-servers">Помощь</a>
+        </div>
+    </header>
+    
+    <section class="main-view">
+        <div class="add-server-text" style="padding: 0;">Настройки<span>.</span></div>
+
+        <div class="settings-data">
+            <div class="container-1-panel" style="justify-content: center;">
+                <div class="server-name">Данные профиля</div>
+                <div class="profile-data">
+                    <div class="static-profile-data">
+                        <div class="profile-data-login">Логин</div>
+                        <div class="profile-data-login">Номер телефона</div>
+                        <div class="profile-data-login">Тип аккаунта</div>
+                        <div class="profile-data-login">Статус аккаунта</div>
+                    </div>
+                    <div class="dynamic-profile-data">
+                        <div class="profile-data-login">{{ user.username }}</div>
+                        <div class="profile-data-login">89009924773</div>
+                        <div class="profile-data-login">Физ лицо</div>
+                        <div class="profile-data-login">Активен</div>
+                    </div>
+                </div>
+                <div class="buttons-set-data">
+                    <a href="{% url 'dashboard_updatedata' %}" class="set-new-data-form">Изменить данные</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-data" style="margin-top: 2%;">
+            <div class="container-1-panel" style="justify-content: center;">
+                <div class="server-name">Изменение пароля</div>
+                <form method="post" class="profile-data-amount">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                        <div style="display: flex;align-items: center;" class="input-form-password">
+                            {{ field }}
+                            <button type="button" id="togglePassword" aria-label="Показать/скрыть пароль">
+                                <img src="eye-icon.svg" alt="Показать пароль" id="eyeIcon">
+                            </button>
+                            <!-- {% if form.is_bound and field.errors %}
+                                <div style="color: red;">{{ field.errors }}</div>
+                            {% endif %} -->
+                        </div>
+                    {% endfor %}
+
+                    <button type="submit" class="set-new-data-form">Изменить пароль</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>

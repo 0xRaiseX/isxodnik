@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKAID cloud панель управления</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/new_css.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container-elements-nav">
+            <a href="{% url 'dashboard' %}" class="logo-panel">S K A I D<span class="highlight"> .CLOUD</span></a>
+            <div class="panel-profile-r">
+                <a href="{% url 'dashboard_finance' %}" class="panel-balance">
+                    {{ user.balance_as_int }} ₽
+                </a>
+                <a href="{% url 'dashboard_settings' %}" class="profile-nav">
+                    {{ user.username }}
+                </a>
+                <a href="{% url 'logout' %}" class="b-nav-logout">Выйти</a>
+            </div>
+        </div>
+        <div class="container-elements-nav-manage">
+            <a href="{% url 'dashboard' %}" class="b-nav-servers">Виртуальные серверы</a>
+            <a href="{% url 'dashboard_finance' %}" class="b-nav-servers">Финансы</a>
+            <a href="{% url 'dashboard_settings' %}" class="b-nav-servers">Настройки</a>
+            <a href="{% url 'dashboard_help' %}" class="b-nav-servers active_nav">Помощь</a>
+        </div>
+    </header>
+    
+    <section class="main-view">
+        <div class="add-server-text" style="padding: 0;">Помощь<span>.</span></div>
+        <div class="panel-server">
+            <div class="container-1-panel">
+                <div class="container-1-panel-local">
+                    <div class="server-name">Помощь и обратная связь</div>
+                    <div class="text-server">Если вы хотите спросить какой-либо вопрос, поругать или похвалить нас - напишите нам в телеграм, ответим как только сможем!</div>
+                </div>
+                <a href="https://t.me/skaid_cloud" class="b-servers-add">
+                    Написать в телеграм
+                    <img src="{% static 'images/tg.png' %}" alt="" style="width: 25px;height: auto;margin-left: 2%;filter: invert(1);">
+                </a>
+            </div>
+            <div class="container-2-panel">
+                <img src="{% static 'images/server1.png' %}" alt="" style="width: 50%;height: auto;">
+            </div>
+        </div>
+    </section>
+</body>
+</html>

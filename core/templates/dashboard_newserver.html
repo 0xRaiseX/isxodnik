@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKAID cloud панель управления</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/new_css.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container-elements-nav">
+            <a href="{% url 'dashboard' %}" class="logo-panel">S K A I D<span class="highlight"> .CLOUD</span></a>
+            <div class="panel-profile-r">
+                <a href="{% url 'dashboard_finance' %}" class="panel-balance">
+                    {{ user.balance_as_int }} ₽
+                </a>
+                <a href="{% url 'dashboard_settings' %}" class="profile-nav">
+                    {{ user.username }}
+                </a>
+                <a href="{% url 'logout' %}" class="b-nav-logout">Выйти</a>
+            </div>
+        </div>
+        <div class="container-elements-nav-manage">
+            <a href="{% url 'dashboard' %}" class="b-nav-servers active_nav">Виртуальные серверы</a>
+            <a href="{% url 'dashboard_finance' %}" class="b-nav-servers">Финансы</a>
+            <a href="{% url 'dashboard_settings' %}" class="b-nav-servers">Настройки</a>
+            <a href="{% url 'dashboard_help' %}" class="b-nav-servers">Помощь</a>
+        </div>
+    </header>
+   <section>
+        <div class="add-server-text">Новый виртуальный сервер<span>.</span></div>
+
+        <div class="geo-server">
+            <div class="geo-text">
+                1. Расположение
+            </div>
+            <div class="geo-blocks">
+                {% for block in geo_blocks %}
+                    <div class="geo-block {% if forloop.first %}activeGEOblock{% endif %}" data-config="{{ block.config_id }}" data-location="{{ block.name }}">
+                        <img src="{{ block.image.url }}" alt="" style="width: 25px; height: auto; margin-right: 3%;">
+                        {{ block.name }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="config-server">
+            <div class="config-text">2. Конфигурация</div>
+            <div class="config-servers">
+                {% for config in configs %}
+                    <div class="config-server-add {% if forloop.first %}activeGEOblock{% endif %}" 
+                         data-location="{{ config.location }}">
+                        <div class="server-config-name server-config-local">{{ config.name }}</div>
+                        <div class="server-config-proc server-config-local">{{ config.proc }}</div>
+                        <div class="server-config-memory server-config-local">{{ config.memory }}</div>
+                        <div class="server-config-nvme server-config-local">{{ config.nvme }}</div>
+                        <div class="server-config-internet server-config-local">{{ config.internet }}</div>
+                        <div class="config-server-prices">
+                            <div class="server-config-price">
+                                <span class="big-text">{{ config.price|floatformat:0 }}</span> ₽/мес
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        
+
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            const geoBlocks = document.querySelectorAll('.geo-block');
+            const configServers = document.querySelectorAll('.config-server-add');
+
+            geoBlocks.forEach(block => {
+                block.addEventListener('click', function () {
+                    // Убираем класс activeGEOblock у всех блоков
+                    geoBlocks.forEach(b => b.classList.remove('activeGEOblock'));
+                    // Добавляем activeGEOblock для текущего блока
+                    this.classList.add('activeGEOblock');
+
+                    // Получаем имя активного блока
+                    const activeName = this.dataset.location;
+                    console.log(activeName);
+
+                    // Скрываем или показываем серверы в зависимости от location
+                    configServers.forEach(server => {
+                        console.log(server.dataset.location);
+                        if (server.dataset.location === activeName) {
+                            server.style.display = 'flex';
+                            server.classList.add('active');
+                        } else {
+                            server.style.display = 'none';
+                            server.classList.remove("active");
+                        }
+                    });
+                    const activeServers = document.querySelectorAll('.config-server-add.active');
+                    if (activeServers.length > 0) {
+                        activeServers[0].classList.add('activeGEOblock');
+                    }
+                });
+            });
+
+            // Инициализация: показываем только те серверы, которые соответствуют первому активному блоку
+            const activeName = document.querySelector('.geo-block.activeGEOblock').dataset.location;
+            configServers.forEach(server => {
+                server.style.display = server.dataset.location === activeName ? 'flex' : 'none';
+            });
+        });
+        </script>
+
+        <div class="confirm">
+            <div class="config-text">3. Операционная система</div>
+
+            <div class="os-blocks">
+                <div class="os-container">
+                    <div class="os-block activeGEOblock" data-config="13">
+                        <img src="{% static 'images/ubuntu.png' %}" alt="" style="width: 25px;height: auto;margin-right: 3%;">
+                        Ubuntu</div>
+                    <div class="os-block" data-config="21">
+                        <img src="{% static 'images/debian.png' %}" alt="" style="width: 25px;height: auto;margin-right: 3%;">
+                        Debian
+                    </div>
+                    <div class="os-block" data-config="33">
+                        <img src="{% static 'images/centos.png' %}" alt="" style="width: 25px;height: auto;margin-right: 3%;">
+                        CentOS
+                    </div>
+                    <div class="os-block" data-config="25">
+                        <img src="{% static 'images/windows.png' %}" alt="" style="width: 25px;height: auto;margin-right: 3%;">
+                        Windows Server
+                    </div>
+                </div>
+                <div class="os-container">
+                    <div class="os-block" data-config="11">
+                        <img src="{% static 'images/almalinux.png' %}" alt="" style="width: 25px;height: auto;margin-right: 3%;">
+                        Alma
+                    </div>
+                    <div class="os-block" data-config="22">
+                        <img src="{% static 'images/arch.png' %}" alt="" style="width: 25px;height: auto;margin-right: 3%;">
+                        Arch
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            const geoBlocks = document.querySelectorAll(".os-block");
+
+            geoBlocks.forEach((block) => {
+                block.addEventListener("click", () => {
+                    // Убираем класс active у всех элементов
+                    geoBlocks.forEach((b) => b.classList.remove("activeGEOblock"));
+
+                    // Добавляем класс active к текущему элементу
+                    block.classList.add("activeGEOblock");
+                    });
+                });
+            });
+        </script>
+
+
+        <div class="payload-period">
+            <div class="config-text">4. Выбор периода оплаты</div>
+            <div class="config-payload-blocks-period">
+                <div class="config-payload-period activeGEOblock">1 месяц</div>
+                <div class="config-payload-period">3 месяца</div>
+                <div class="config-payload-period">6 месяцев</div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            const geoBlocks = document.querySelectorAll(".config-payload-period");
+
+            geoBlocks.forEach((block) => {
+                block.addEventListener("click", () => {
+                    // Убираем класс active у всех элементов
+                    geoBlocks.forEach((b) => b.classList.remove("activeGEOblock"));
+
+                    // Добавляем класс active к текущему элементу
+                    block.classList.add("activeGEOblock");
+                    });
+                });
+            });
+        </script>
+
+        <div class="network-container">
+            <div class="config-text">5. Сеть</div>
+            <div class="local-network-container">
+                <label class="checkbox-container-network">
+                    <input type="checkbox" id="enable-backups">
+                    Публичный IPv4 — <span id="backup-cost">150 ₽/мес</span>
+                </label>
+                <label class="checkbox-container-network">
+                    <input type="checkbox" id="enable-backups" checked disabled>
+                    IPv6 — <span id="backup-cost">бесплатно</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="payload">
+            <div class="config-text">6. Бэкапы</div>
+            <div class="local-backup-container">
+                <label class="checkbox-container-network">
+                  <input type="checkbox" id="enable-backups">
+                  Подключить бэкапы <span id="backup-cost"></span>
+                </label>
+              </div>
+        </div>
+
+        <div class="payload-all">
+            <div class="local-container-payload-all">
+                <div class="all-price">Итого</div>
+                <div class="container-config">
+                <div class="payload-1">
+                    <div class="payload-name">Конфигурация</div>
+                    <div class="payload-price">150 ₽/мес</div>
+                </div>
+                <div class="payload-1">
+                    <div class="payload-name">Бэкапы</div>
+                    <div class="payload-price">90 ₽/мес</div>
+                </div>
+                <div class="payload-1">
+                    <div class="payload-name">Публчиный IPv4</div>
+                    <div class="payload-price">150 ₽/мес</div>
+                </div>
+                <div class="payload-1">
+                    <div class="payload-name">Количество серверов</div>
+                    <div class="payload-price">1</div>
+                </div>
+            </div>
+        </div>
+        <div class="container-config-2">
+            <div class="price-all"><span id="final-price">0</span> руб/мес</div>
+            <div class="b-confirm-config">Оплатить</div>
+        </div>
+        </div>
+   </section>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const geoBlocks = document.querySelectorAll(".config-server-add");
+        const priceElement = document.getElementById("final-price");
+
+        geoBlocks.forEach((block) => {
+            block.addEventListener("click", () => {
+                // Убираем класс active у всех элементов
+                geoBlocks.forEach((b) => b.classList.remove("activeGEOblock"));
+
+                // Добавляем класс active к текущему элементу
+                block.classList.add("activeGEOblock");
+
+                // Получаем цену из выбранного блока
+                const priceText = block.querySelector(".server-config-price .big-text").innerText;
+                const price = parseInt(priceText.replace(/\s+/g, ''));  // Преобразуем текст цены в число
+
+                // Получаем текущую итоговую цену
+                let currentTotalPrice = parseInt(priceElement.innerText);
+
+                // Прибавляем цену к текущей итоговой сумме
+                currentTotalPrice += price;
+
+                // Обновляем итоговую цену
+                priceElement.innerText = currentTotalPrice.toLocaleString();
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
