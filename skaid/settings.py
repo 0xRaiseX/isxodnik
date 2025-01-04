@@ -138,5 +138,5 @@ EMAIL_HOST = 'smtp.timeweb.ru'
 EMAIL_PORT = 465
 EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'support@skaid-cloud.ru'
-EMAIL_HOST_USER = 'maks.demkin87@gmail.com'
+EMAIL_HOST_USER = 'support@skaid-cloud.ru'
 EMAIL_HOST_PASSWORD = 'F9wjm8h*(FH98bf8uwfg'
